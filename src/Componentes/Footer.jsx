@@ -5,7 +5,7 @@ import '../style.css';
 const Footer = () => {
   return (
     <footer>
-      <p>&copy; 2023 Sua Empresa. Todos os direitos reservados.</p>
+      <p>&copy; COPYRIGHT JULIA MISTIERI 3003</p>
     </footer>
   );
 };
