@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import "./style.css";
 
@@ -12,6 +12,7 @@ export default function Cadastrar() {
     const [marca, setMarca] = useState("");
 
     useEffect(() => { localStorage.setItem("Lista", JSON.stringify(lista)) }, [lista]);
+    const navigate = useNavigate();
 
 
     const salvar = (e) => {
@@ -24,6 +25,7 @@ export default function Cadastrar() {
         setCarros("")
         setMarca("")
         setIdCriar(idCriar + 1)
+        navigate("/")
     };
 
     const remover = (id) => {

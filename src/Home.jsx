@@ -1,10 +1,18 @@
 import React from 'react';
 import Header from './Componentes/Header';
-import NavBar from './Componentes/NavBar';
-import Footer from './Componentes/Footer';
+import Card from './Componentes/Card';
+import Detalhe from './Componentes/Detalhe';
 
 export default function Home(){
-  {lista.map((carros)=>
+ 
+    return(
+    <div>
+
+      <Header />
+      
+      <main>
+        <Card />
+        {lista.map((carros)=>
     <ul key={carros.id}>
         <li>
         <p>{carros.carros}</p>
@@ -13,15 +21,9 @@ export default function Home(){
         </li>
     </ul>
     )};
-    return(
-    <div>
-      <Header />
-      
-      <main>
-        <NavBar />
         {/* Outras seções do corpo da página podem ser adicionadas aqui */}
       </main>
-      <Footer />
+      <Detalhe />
     </div>
   );
 };
