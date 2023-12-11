@@ -1,17 +1,13 @@
 import { useParams } from "react-router-dom"
-import Card from "./Componente/Card";
+import Card from './Card';
+
 export default function Detalhe() {
 
     const { id } = useParams()
-    const lista = JSON.parse(localStorage.getItem("Lista"));
+    const lista = JSON.parse(localStorage.getItem("Lista")) || [];
+    const filtrarItem = lista.find((carrosObj)=> carrosObj.id == id) || null;
 
-    const carros = lista.filter((objeto) => {
-        if (objeto.id == id) {
-            return objeto
-        }
-        return null
-    })
     return (
-        <Card carro={carros[0]} />
+        <Card carro={filtrarItem} />
     )
 }
