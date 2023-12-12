@@ -7,8 +7,11 @@ export default function Home(){
  
     return(
     <div>
+    <Header />
+    <Card />
+    <Detalhe />
 
+  
     </div>
   );
 };
-

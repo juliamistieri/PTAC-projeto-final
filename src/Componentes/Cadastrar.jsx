@@ -1,38 +1,35 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import '../cadastrar.css';
 
-export default function Cadastrar() {
+export default function Todo() {
     
     const listaLocalStorage = JSON.parse(localStorage.getItem("Lista")) || [];
     const [lista, setLista] = useState(listaLocalStorage);
     const [idCriar, setIdCriar] = useState(listaLocalStorage [listaLocalStorage.length - 1]?.id + 1 || 1);
+    const [carros, setCarros] = useState("");
+    const [url, setUrl] = useState("");
+    const [titulo, setTitulo] = useState("");
+    const [descricao, setDescricao] = useState("");
 
-    const [carro, setCarro] = useState({
-    idCriar: "",
-    titulo: "",
-    urllink: "",
-    descricao: ""
-    });
-    
-    const carrosGuardados = JSON.parse(localStorage.getItem('carros')) || [null];
-    carrosGuardados.push(titulo);
-    localStorage.setItem('carros', JSON.stringify(carrosGuardados));
-    const navigate = useNavigate('/');
+    useEffect(() => { localStorage.setItem("Lista", JSON.stringify(lista)) }, [lista]);
+
 
     const salvar = (e) => {
         e.preventDefault();
         setLista([...lista, {
             id:idCriar,
+            carros:carros,
+            url:url,
             titulo:titulo,
-            urlLink:urlLink,
             descricao:descricao
         }]);
-        setTitulos("")
-        seturlLink("")
+        setCarros("")
+        setUrl("")
+        setTitulo("")
         setDescricao("")
         setIdCriar(idCriar + 1)
-        navigate("/")
     };
 
     return(
@@ -42,21 +39,26 @@ export default function Cadastrar() {
         <br></br>
         <h1>Lista de Carros</h1>
             <form onSubmit={salvar}>
-            <p>Adicionar Titulo</p>
+            <p>Adicionar Carro</p>
                 <input type="text"
-                value={carro.titulo}
+                value={carros}
                 onChange={(e)=>
-                {setCarro(e.target.value)}} />
+                {setCarros(e.target.value)}} />
                 <p>Adicionar Url</p>
                 <input type="text"
-                value={carro.urlLink}
+                value={url}
                 onChange={(e)=>
-                {setCarro(e.target.value)}} />
+                {setUrl(e.target.value)}} />
+                <p>Adicionar Titulo</p>
+                <input type="text"
+                value={titulo}
+                onChange={(e)=>
+                {setTitulo(e.target.value)}} />
                 <p>Adicionar Descrição</p>
                 <input type="text"
-                value={carro.descricao}
+                value={descricao}
                 onChange={(e)=>
-                {setCarro(e.target.value)}} />
+                {setDescricao(e.target.value)}} />
                 <br></br>
                 <br></br>
                 <button>ADICIONAR</button>
